@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HexClock-javascript</title>
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			margin-top: 150px;
+			text-align: center;
+			color: #fff;
+			text-shadow: -1px -1px 10px #000;
+		}
+		#clock{
+			font-size: 90px;
+			font-family: arial;
+		}
+	</style>
+</head>
+<body>
+<h1 id="clock">00:00.0</h1>
+<p id="hex">#000000</p>
+<script type="text/javascript">
+	var clock=document.getElementById('clock');
+	var hex=document.getElementById('hex');
+	function Swd(){
+		var time=new Date();
+		var Hours=time.getHours().toString();
+		var Minutes=time.getMinutes().toString();
+		var Seconds=time.getSeconds().toString();
+		if (Hours<2){
+			Hours='0'+Hours;
+		}
+		if (Minutes<2){
+			Minutes='0'+Minutes;
+		}
+		if (Seconds<2){
+			Seconds='0'+Seconds;
+		}
+		var hexstr="#"+Hours+Minutes+Seconds;
+		var clockstr=Hours+":"+Minutes+"."+Seconds;
+		clock.textContent=clockstr;
+		hex.textContent=hexstr;
+		document.body.style.background=hexstr;
+	}
+	Swd();
+	setInterval(Swd,1000);
+</script>
+</body>
+</html>
